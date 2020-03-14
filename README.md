@@ -126,9 +126,15 @@ first commit
 1.  settings : 거의 수정할 내용이 없다.
 1.  local : 거의 수정할 내용이 없다.
 
-## 6. 안드로이드 스튜디오 사용법
+## 6. Activity
 
 1. Activity
    - 앱의 한 화면이 된다.
-   - Life Cycle (수명 주기)
-     ![LifeCycle](./lifecycle.png)
+   - Life Cycle (수명 주기) - 6개의 콜백
+     - onCreate() : 1
+     - onStart() : 2
+     - onResume() : 3 (반드시 거쳐야 하는 라이프 사이클)
+     - onPause() : 4 -> 3 (앱이 일부 보이지 않을때)
+     - onStop() : 5 -> 2 -> 3 (앱을 완벽히 내릴 때)
+     - onDestroy()
+![LifeCycle](./lifecycle.png)
