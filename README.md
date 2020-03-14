@@ -129,12 +129,15 @@ first commit
 ## 6. Activity
 
 1. Activity
+
    - 앱의 한 화면이 된다.
    - Life Cycle (수명 주기) - 6개의 콜백
-     - onCreate() : 1
-     - onStart() : 2
+
+     - onCreate() : 1 (activity가 만들어질 때 단 한번만 호출 된다.)
+     - onStart() : 2 (activity가 다시 호출될 때 하면 되는 작업들을 한다.)
      - onResume() : 3 (반드시 거쳐야 하는 라이프 사이클)
      - onPause() : 4 -> 3 (앱이 일부 보이지 않을때)
      - onStop() : 5 -> 2 -> 3 (앱을 완벽히 내릴 때)
      - onDestroy()
+
 ![LifeCycle](./lifecycle.png)
