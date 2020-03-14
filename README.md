@@ -130,3 +130,5 @@ first commit
 
 1. Activity
    - 앱의 한 화면이 된다.
+   - Life Cycle (수명 주기)
+     ![LifeCycle](./lifecycle.png)
