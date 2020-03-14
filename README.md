@@ -141,3 +141,107 @@ first commit
      - onDestroy()
 
 ![LifeCycle](./lifecycle.png)
+
+2. Life Cycle 실습코드
+
+   - Log.d : 로그를 남기기
+
+     ```code
+     package com.geoniljang.androidui
+
+     import androidx.appcompat.app.AppCompatActivity
+     import android.os.Bundle
+     import android.util.Log
+
+     class MainActivity : AppCompatActivity() {
+
+         override fun onCreate(savedInstanceState: Bundle?) {
+             super.onCreate(savedInstanceState)
+             setContentView(R.layout.activity_main)
+
+             Log.d("Life Cycle","Call onCreate")
+
+         }
+
+         override fun onStart() {
+             super.onStart()
+             Log.d("Life Cycle","Call onStart")
+         }
+
+         override fun onResume() {
+             super.onResume()
+             Log.d("Life Cycle","Call onResume")
+
+         }
+
+         override fun onPause() {
+             super.onPause()
+             Log.d("Life Cycle","Call onPause")
+
+         }
+
+         override fun onStop() {
+             super.onStop()
+             Log.d("Life Cycle","Call onStop")
+
+         }
+
+         override fun onDestroy() {
+             super.onDestroy()
+             Log.d("Life Cycle","Call onDestroy")
+
+         }
+
+     }
+
+     ```
+
+3. Xml에 적은 값을 Activity로 가져와 사용하기.
+
+   - view를 activity로 가져와서 사용하도록 해본다.
+   - 익명함수를 사용한다.
+   - 이름이 없는 함수/클래스
+   - 이름을 만들어 줄 필요가 없다.
+   - 단 한 번만 사용
+
+   ```code
+        package com.geoniljang.androidui
+
+        import androidx.appcompat.app.AppCompatActivity
+        import android.os.Bundle
+        import android.util.Log
+        import android.view.View
+        import kotlinx.android.synthetic.main.activity_main.*
+        import java.util.*
+
+        class Listener : AppCompatActivity() {
+
+            override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                setContentView(R.layout.activity_listener)
+
+                // 아래와 같은 방법으로 뷰객체에 접근이 가능하나 코틀린의 경우는 다음과 같이 아이디로만 접근도 가능하다, 그렇게 접그하기위해서는 xml을 import 해줘야 한다.
+                //val textView : TextView = findViewById<TextView>(R.id.textView)
+                textView.text = "I know Your Jang Geonil"
+                textView.setOnClickListener{
+                    Log.d("click", "CLICK ME lambda")
+                }
+
+                textView.setOnClickListener(object : View.OnClickListener {
+                    override fun onClick(v: View?) {
+                        Log.d("click", "CLICK ME object")
+                    }
+                });
+
+                class ClickListner : View.OnClickListener{
+                    override fun onClick(v: View?) {
+                        Log.d("click", "Hello from the other side")
+                    }
+                }
+
+                val listner = ClickListner()
+                textView.setOnClickListener(listner)
+            }
+        }
+
+   ```
