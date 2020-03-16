@@ -4,10 +4,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
+import kotlinx.android.synthetic.main.activity_listener.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main.textView
 import java.util.*
 
 class Listener : AppCompatActivity() {
+
+    var number : Int = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,17 @@ class Listener : AppCompatActivity() {
 
         val listner = ClickListner()
         textView.setOnClickListener(listner)
+
+
+        // 뷰를 조작하는 함수들
+        textView.setText("안녕하세요 만나서 반가워요")
+        image.setImageResource(R.drawable.ic_launcher_foreground)
+        image.setOnClickListener(object: View.OnClickListener{
+            override fun onClick(v: View?) {
+                textView.setText("${number++}")
+            }
+        })
+
 
 
     }

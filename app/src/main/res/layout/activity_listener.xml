@@ -16,4 +16,11 @@
         android:background="@color/colorPrimary"
         android:textColor="@color/colorAccent"
         android:text="I AM GEONIL JANG"/>
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="424dp"
+        android:layout_height="95dp"
+        android:src="@drawable/ic_launcher_background" />
+
 </LinearLayout>
