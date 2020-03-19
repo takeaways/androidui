@@ -126,7 +126,7 @@ first commit
 1.  settings : 거의 수정할 내용이 없다.
 1.  local : 거의 수정할 내용이 없다.
 
-## 6. Activity
+## 5. Activity
 
 1. Activity
 
@@ -204,101 +204,137 @@ first commit
    - 이름을 만들어 줄 필요가 없다.
    - 단 한 번만 사용
 
-   ```code
-        package com.geoniljang.androidui
+     ```code
+       package com.geoniljang.androidui
 
-        import androidx.appcompat.app.AppCompatActivity
-        import android.os.Bundle
-        import android.util.Log
-        import android.view.View
-        import kotlinx.android.synthetic.main.activity_main.*
-        import java.util.*
+       import androidx.appcompat.app.AppCompatActivity
+       import android.os.Bundle
+       import android.util.Log
+       import android.view.View
+       import kotlinx.android.synthetic.main.activity_main.*
+       import java.util.*
 
-        class Listener : AppCompatActivity() {
+       class Listener : AppCompatActivity() {
 
-            override fun onCreate(savedInstanceState: Bundle?) {
-                super.onCreate(savedInstanceState)
-                setContentView(R.layout.activity_listener)
+           override fun onCreate(savedInstanceState: Bundle?) {
+               super.onCreate(savedInstanceState)
+               setContentView(R.layout.activity_listener)
 
-                // 아래와 같은 방법으로 뷰객체에 접근이 가능하나 코틀린의 경우는 다음과 같이 아이디로만 접근도 가능하다, 그렇게 접그하기위해서는 xml을 import 해줘야 한다.
-                //val textView : TextView = findViewById<TextView>(R.id.textView)
-                textView.text = "I know Your Jang Geonil"
-                //람다 방식 ----
-                textView.setOnClickListener{
-                    Log.d("click", "CLICK ME lambda")
-                }
-                //익명함수 방식 ----
-                textView.setOnClickListener(object : View.OnClickListener {
-                    override fun onClick(v: View?) {
-                        Log.d("click", "CLICK ME object")
-                    }
-                });
-                //이벤트 클래스 구현 방식 ----
-                class ClickListner : View.OnClickListener{
-                    override fun onClick(v: View?) {
-                        Log.d("click", "Hello from the other side")
-                    }
-                }
+               // 아래와 같은 방법으로 뷰객체에 접근이 가능하나 코틀린의 경우는 다음과 같이 아이디로만 접근도 가능하다, 그렇게 접그하기위해서는 xml을 import 해줘야 한다.
+               //val textView : TextView = findViewById<TextView>(R.id.textView)
+               textView.text = "I know Your Jang Geonil"
+               //람다 방식 ----
+               textView.setOnClickListener{
+                   Log.d("click", "CLICK ME lambda")
+               }
+               //익명함수 방식 ----
+               textView.setOnClickListener(object : View.OnClickListener {
+                   override fun onClick(v: View?) {
+                       Log.d("click", "CLICK ME object")
+                   }
+               });
+               //이벤트 클래스 구현 방식 ----
+               class ClickListner : View.OnClickListener{
+                   override fun onClick(v: View?) {
+                       Log.d("click", "Hello from the other side")
+                   }
+               }
 
-                val listner = ClickListner()
-                textView.setOnClickListener(listner)
-            }
-        }
-
-   ```
+               val listner = ClickListner()
+               textView.setOnClickListener(listner)
+           }
+       }
+     ```
 
 4. View를 조작하는 방법
 
-   ```code
-    package com.geoniljang.androidui
+   - 방법알아보기
 
-    import androidx.appcompat.app.AppCompatActivity
-    import android.os.Bundle
-    import android.util.Log
+     ```code
+     package com.geoniljang.androidui
 
-    class MainActivity : AppCompatActivity() {
+     import androidx.appcompat.app.AppCompatActivity
+     import android.os.Bundle
+     import android.util.Log
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_main)
+     class MainActivity : AppCompatActivity() {
 
-            Log.d("Life Cycle","Call onCreate")
+         override fun onCreate(savedInstanceState: Bundle?) {
+             super.onCreate(savedInstanceState)
+             setContentView(R.layout.activity_main)
 
-        }
+             Log.d("Life Cycle","Call onCreate")
 
-        override fun onStart() {
-            super.onStart()
-            Log.d("Life Cycle","Call onStart")
-        }
+         }
 
-        override fun onResume() {
-            super.onResume()
-            Log.d("Life Cycle","Call onResume")
+         override fun onStart() {
+             super.onStart()
+             Log.d("Life Cycle","Call onStart")
+         }
 
-        }
+         override fun onResume() {
+             super.onResume()
+             Log.d("Life Cycle","Call onResume")
 
-        override fun onPause() {
-            super.onPause()
-            Log.d("Life Cycle","Call onPause")
+         }
 
-        }
+         override fun onPause() {
+             super.onPause()
+             Log.d("Life Cycle","Call onPause")
 
-        override fun onStop() {
-            super.onStop()
-            Log.d("Life Cycle","Call onStop")
+         }
 
-        }
+         override fun onStop() {
+             super.onStop()
+             Log.d("Life Cycle","Call onStop")
 
-        override fun onDestroy() {
-            super.onDestroy()
-            Log.d("Life Cycle","Call onDestroy")
+         }
 
-        }
-   ```
+         override fun onDestroy() {
+             super.onDestroy()
+             Log.d("Life Cycle","Call onDestroy")
 
+         }
+     }
+     ```
 
-    }
+## 6. Intent
 
-```
+1. 인텐트란? 의도, 요구, 의사전달, 요청
 
-```
+2. 요청관계( 사용처)
+   - Activity & Activity
+   - Android System & My App
+   - Other App & My App -> 무작정 사용할 수 없다.
+3. 요청의 종류
+
+   - 전달만 하는 요청
+   - 리턴을 받는 요청
+
+4. 명시적, 암시적 요청
+
+## 7. Task
+
+1. Stack
+
+   - 햄버거 처럼 아래에서 위로 쌓이는 것
+   - Task가 쌓인다
+   - 켜지는 방법을 자체 속성으로 가지고 있는경우
+     - launchMonde
+   - 겨치는 방법을 지시하는 경우
+
+     - IntentFlag
+
+   - launchMode
+     - Standard (다중허용)
+     - singleTop (조건부 허용 -> 열러고 하는 엑디비티가 현재 엑티비티 라면 onNewIntent를 호출한다.)
+     - singleTask
+     - singleInstance
+
+## 8. Fragment
+
+1. Activity -> 앱에 보이는 화면의 단위
+   - 파트1,2,3,4,5,6 으로 엑티비티가 상당히 길다면??
+   - 관리포인트가 많아진다 -> 관리가 어려워 진다.
+   - 안드로이드는 디바이스가 너무 다양하다
+2. 엑티비티의 파트를 나누어서 책임진다.
